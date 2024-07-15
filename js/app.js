@@ -18,7 +18,7 @@ let board, turn, winner, tie
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll(`.sqr`)
 const messageEl = document.getElementById(`message`)
-
+const resetBtnEl = document.getElementById(`reset`)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -118,6 +118,8 @@ function switchPlayerTurn() {
 squareEls.forEach((squareEl) => {
     squareEl.addEventListener(`click`, handleClick)
 })
+
+resetBtnEl.addEventListener(`click`, init)
 
 //1) Define the required variables used to track the state of the game.
 
