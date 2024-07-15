@@ -69,9 +69,9 @@ if(board[squareIndex] === `X` || board[squareIndex] === `O` || winner)
     return
     }
     placePiece(squareIndex)
-    console.log(board);
     checkForWinner()
-    console.log(winner);
+    checkForTie()
+    switchPlayerTurn()
     render()
 }
 
@@ -88,12 +88,31 @@ function checkForWinner() {
         (board[1] != `` && board[1] === board [4] && board[1] === board[7]) ||
         (board[2] != `` && board[2] === board [5] && board[2] === board[8]) ||
         (board[0] != `` && board[0] === board [4] && board[0] === board[8]) ||
-        (board[2] != `` && board[2] === board [4] && board[2] === board[8]) ||
+        (board[2] != `` && board[2] === board [4] && board[2] === board[6]) 
     ) {
         winner = true
     }
 }
 
+function checkForTie() {
+    if (winner) {
+        return
+    }
+    if (!board.includes(``)) {
+        tie = true
+    }
+}
+
+function switchPlayerTurn() {
+    if (winner) {
+        return
+    }
+    if (turn === `X`) {
+        turn = `O`
+    } else {
+        turn = `X`
+    }
+}
 
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach((squareEl) => {
