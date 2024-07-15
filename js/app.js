@@ -25,7 +25,7 @@ init()
 
 function init() {
     board = [``, ``, ``, ``, ``, ``, ``, ``, ``]
-    turn = `X`
+    turn = `P1`
     winner = false
     tie = false
     render()
@@ -38,15 +38,15 @@ function render() {
 
 function updateBoard() {
     board.forEach((cell, idx) => {
-        if (cell === `X`) {
-            squareEls[idx].textContent = `X`
+        if (cell === `P1`) {
+            squareEls[idx].textContent = `P1`
             squareEls[idx].style.backgroundColor = `green`
-        } else if (cell === `O`) {
-            squareEls[idx].textContent = `O`
+        } else if (cell === `P2`) {
+            squareEls[idx].textContent = `P2`
             squareEls[idx].style.backgroundColor = `blue`
         } else {
             squareEls[idx].textContent = ``
-            squareEls[idx].style.backgroundColor = `white`
+            squareEls[idx].style.background = `white`
         }
         squareEls[idx].textContent = cell
     });
@@ -64,7 +64,7 @@ function updateMessage () {
 
 function handleClick(evt) {
 const squareIndex = evt.target.id
-if(board[squareIndex] === `X` || board[squareIndex] === `O` || winner)
+if(board[squareIndex] === `P1` || board[squareIndex] === `P2` || winner)
     {
     return
     }
@@ -107,10 +107,10 @@ function switchPlayerTurn() {
     if (winner) {
         return
     }
-    if (turn === `X`) {
-        turn = `O`
+    if (turn === `P1`) {
+        turn = `P2`
     } else {
-        turn = `X`
+        turn = `P1`
     }
 }
 
